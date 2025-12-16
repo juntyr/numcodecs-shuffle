@@ -32,6 +32,18 @@ def test_roundtrip():
     check_roundtrip(np.arange(256).astype(np.int8).reshape(16, 16))
     check_roundtrip(np.arange(1000).reshape(10, 10, 10))
     check_roundtrip(np.array([np.inf, -np.inf, np.nan, -np.nan, 0.0, -0.0]))
+    check_roundtrip(
+        np.array(
+            [np.inf, -np.inf, np.nan, -np.nan, 0.0, -0.0],
+            dtype=np.dtype(np.float64).newbyteorder("<"),
+        )
+    )
+    check_roundtrip(
+        np.array(
+            [np.inf, -np.inf, np.nan, -np.nan, 0.0, -0.0],
+            dtype=np.dtype(np.float64).newbyteorder(">"),
+        )
+    )
 
 
 def test_example():
