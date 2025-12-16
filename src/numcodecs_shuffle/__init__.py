@@ -4,18 +4,12 @@
 
 __all__ = ["TypedByteShuffleCodec"]
 
-from typing import TypeVar
-
 import numcodecs.compat
 import numcodecs.registry
 import numpy as np
 from numcodecs.abc import Codec
 
-T = TypeVar("T", bound=np.number, covariant=True)
-""" Any numpy [`number`][numpy.number] data type (covariant). """
-
-S = TypeVar("S", bound=tuple[int, ...], covariant=True)
-""" Any array shape (covariant). """
+from .typing import S, T
 
 
 class TypedByteShuffleCodec(Codec):
